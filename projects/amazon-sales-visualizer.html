@@ -188,44 +188,64 @@
         </header>
 
         <main>
-            <p>As an Amazon seller running Atlatl & Co, I needed better visibility into my business metrics. Amazon's Seller Central provides data, but it's spread across multiple pages and lacks the visual clarity needed for quick decision-making. I built a custom sales visualization dashboard to aggregate and display key business metrics in real-time.</p>
+            <p>As an Amazon seller running Atlatl & Co, I needed better visibility into my business metrics. I found myself constantly refreshing the Amazon Seller app like a slot machine, hoping to see new sales. To solve this problem, I built a dedicated LED display for sales data that sits on my kitchen counter.</p>
+
+            <div style="display: flex; justify-content: center; margin: 30px 0;">
+                <div style="max-width: 80%;">
+                    <img src="../projects/sales-visualizer/dashboard-green.jpg" alt="LED Sales Dashboard showing dollar amounts" style="width: 100%; margin-bottom: 20px;">
+                    <img src="../projects/sales-visualizer/dashboard-blue.jpg" alt="LED Sales Dashboard showing units sold" style="width: 100%;">
+                    <p style="text-align: center; font-size: 0.9em; color: #666;">Physical LED dashboard showing sales data (green) and units sold (blue/purple)</p>
+                </div>
+            </div>
 
             <h2>The Challenge</h2>
 
-            <p>Running a product business on Amazon generates extensive data: sales volume, revenue, profit margins, inventory levels, advertising spend, and customer metrics. However, Amazon's native interface makes it difficult to see trends at a glance or correlate different metrics. I needed a tool that could answer questions like "How is my new product performing compared to last month?" or "What's my actual profit after all fees and advertising costs?"</p>
+            <p>Amazon's Seller Central provides data, but it's spread across multiple pages and requires constant checking. The mobile app isn't much better - I found myself obsessively pulling down to refresh throughout the day. I wanted a passive display that would always show my current sales status without requiring any interaction.</p>
 
-            <h2>Solution Architecture</h2>
+            <h2>Solution: LED Dashboard</h2>
 
             <div class="tech-highlight">
-                <h3>Data Pipeline</h3>
-                <p><strong>Amazon API Integration:</strong> [Details to be added]</p>
-
-                <p><strong>Data Processing:</strong> [Details to be added]</p>
-
-                <p><strong>Visualization Dashboard:</strong> [Details to be added]</p>
+                <h3>Hardware Display</h3>
+                <p>I built a dedicated LED matrix display that shows:</p>
+                <ul>
+                    <li><strong>64-day Sales History:</strong> Bar chart showing the last 64 days of sales data</li>
+                    <li><strong>Two Rotating Views:</strong>
+                        <ul>
+                            <li>Dollar sales (in green) with current date</li>
+                            <li>Units sold (in blue/purple) with current time</li>
+                        </ul>
+                    </li>
+                    <li><strong>Real-time Updates:</strong> Refreshes every five minutes</li>
+                </ul>
             </div>
 
-            <h2>Key Features</h2>
+            <h2>Technical Implementation</h2>
 
             <ul>
-                <li>Real-time sales and revenue tracking</li>
-                <li>Profit margin calculation including all Amazon fees</li>
-                <li>Inventory level monitoring and reorder alerts</li>
-                <li>Product performance comparison</li>
-                <li>Advertising ROI analysis</li>
-                <li>Historical trend visualization</li>
+                <li><strong>Data Source:</strong> Amazon SP-API with OAuth authentication</li>
+                <li><strong>Update Frequency:</strong> Polls for new data every five minutes</li>
+                <li><strong>Visualization:</strong> LED matrix display with custom graphics rendering</li>
+                <li><strong>Historical Data:</strong> Stores and displays the past 64 days of sales performance</li>
+                <li><strong>Display Modes:</strong> Toggles between revenue and unit count visualizations</li>
             </ul>
 
-            <h2>Technical Stack</h2>
+            <h2>Results & Impact</h2>
+
+            <p>This physical dashboard has completely changed how I monitor my Amazon business. I almost never check the Seller app anymore, except for review and inventory data. Having the sales data visible at a glance in my kitchen has reduced the anxiety of constant app checking while keeping me informed of my business performance.</p>
+
+            <p>After <a href="https://www.reddit.com/r/FulfillmentByAmazon/comments/1mkjquw/build_led_dashboard_for_tracking_amazon_sales/" target="_blank">sharing this project on Reddit</a>, I've received numerous requests from other sellers interested in having similar dashboards.</p>
+
+            <h2>Next Steps</h2>
+
+            <p>I'm currently working on adding more metrics to the display, including:</p>
             <ul>
-                <li>Amazon SP-API for data access</li>
-                <li>Python for data processing and analysis</li>
-                <li>Modern web framework for dashboard UI</li>
-                <li>Database for historical data storage</li>
-                <li>Automated data refresh and reporting</li>
+                <li>Inventory levels with reorder alerts</li>
+                <li>Customer review notifications</li>
+                <li>Profitability metrics (after Amazon fees)</li>
+                <li>PPC advertising performance</li>
             </ul>
 
-            <p><em>This project is currently in active development. More details and screenshots will be added as the system is completed.</em></p>
+            <p><em>This project is still in active development. I'm considering whether to productize this for other Amazon sellers based on the interest I've received.</em></p>
 
             <a href="../about.html" class="back-btn">← Back to About</a>
         </main>
