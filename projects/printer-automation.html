@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Printer Automation System - Miguel Clement</title>
+    <link rel="icon" href="../favicon/favicon.png">
+    <link rel="apple-touch-icon" href="../favicon/favicon.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 60px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #000000;
+        }
+
+        .breadcrumb .separator {
+            margin: 0 10px;
+            color: #cccccc;
+        }
+
+        .breadcrumb .current {
+            color: #000000;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666666;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        main {
+            padding: 60px 0;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #000000;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #333333;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 30px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tech-highlight {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 3px solid #000000;
+        }
+
+        .video-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000000;
+            border: 1px solid #e0e0e0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .image-col {
+            flex: 1;
+            min-width: 250px;
+            margin-right: 20px;
+        }
+
+        .image-col:last-child {
+            margin-right: 0;
+        }
+
+        .image-col img {
+            width: 100%;
+            margin: 0;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background-color: transparent;
+            color: #000;
+            border: 1px solid #000;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            header {
+                padding: 30px 0 40px 0;
+            }
+
+            main {
+                padding: 40px 0;
+            }
+
+            .image-col {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="../about.html">About</a>
+                <span class="separator">/</span>
+                <span class="current">3D Printer Automation System</span>
+            </div>
+            <h1>3D Printer Automation System</h1>
+            <p class="subtitle">Transforming batch processing into continuous manufacturing (2018)</p>
+        </header>
+
+        <main>
+            <p>While running a small manufacturing business (Atlatl & Co, originally "Print Radius") selling 3D-printed car phone mounts, I encountered a significant production bottleneck: the need for human intervention to reset printers between jobs. This limitation was particularly problematic as sales reached approximately 250 units monthly, requiring continuous operation while I was at my day job.</p>
+
+            <h2>The Automation Challenge</h2>
+
+            <p>3D printing typically requires manual intervention between prints to remove completed objects and restart the process. This created a fundamental scaling problem: how could I maintain production while away at work? The challenge led me to develop increasingly sophisticated automation solutions that transformed standard 3D printers into autonomous manufacturing cells.</p>
+
+            <h2>Solution 1: Robotic Arm System</h2>
+
+            <p>My first automation approach utilized robotic systems engineering principles to create a complete remote manufacturing cell:</p>
+
+            <div class="tech-highlight">
+                <h3>Robotic Arm Implementation</h3>
+                <p><strong>Mechanical Design:</strong> I modified an open-source robot arm design to create a system capable of sweeping completed prints off the build plate with precise movements. This required careful calibration to ensure consistent clearance and sufficient force to remove adhered prints.</p>
+
+                <p><strong>Sensing & Remote Monitoring:</strong> I integrated a camera system and built a web interface displaying live video feed and critical telemetry (particularly build plate temperature). This allowed me to monitor when conditions were optimal for print removal.</p>
+
+                <p><strong>Notification System:</strong> I implemented an SMS notification system that alerted me when the build plate reached the ideal temperature for print removal—warm enough for the print to come free, but cool enough to ensure structural integrity.</p>
+
+                <p><strong>Electromechanical Automation:</strong> To complete the automation loop, I designed and fabricated solenoid actuators positioned to physically press the printer's control buttons, allowing remote restart capability after successful print removal.</p>
+            </div>
+
+            <div class="video-container">
+                <h3>Robot Arm Demo</h3>
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/mhtXodsbd6k?si=7Wu6FpIE__-3vU-2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <p>While this system demonstrated proof-of-concept for remote manufacturing automation, it presented reliability challenges. Camera failures sometimes prevented operation, and the mechanical components required frequent maintenance.</p>
+
+            <h2>Solution 2: Integrated Printer Control System</h2>
+
+            <p>My second approach leveraged systems thinking to create a more elegant solution by recognizing the 3D printer itself as a precision robotic platform:</p>
+
+            <div class="tech-highlight">
+                <h3>Integrated Control System</h3>
+                <p><strong>Print Head Modification:</strong> I designed and attached a specialized "shovel" tool to the print head assembly, effectively turning the printer into its own clearing mechanism.</p>
+
+                <p><strong>Custom G-code Programming:</strong> Learning G-code (the machine language controlling 3D printers), I developed a specialized command sequence that:</p>
+                <ul>
+                    <li>Monitored build plate temperature until it reached optimal removal temperature</li>
+                    <li>Executed precise movements to ram prints off the build plate</li>
+                    <li>Repositioned the print head to begin the next print operation</li>
+                    <li>Controlled heating elements to prepare for the next cycle</li>
+                </ul>
+
+                <p><strong>Manufacturing Automation:</strong> I modified standard print files to execute five consecutive production cycles with intermediate cooling and clearing operations, transforming a batch process into a continuous manufacturing pipeline that maximized output during unattended operation.</p>
+            </div>
+
+            <div class="video-container">
+                <h3>Integrated Automation Demo</h3>
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/EhR_e9beLzk?si=VUM5kolZKRa7EDlG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <p>This solution proved superior in reliability and elegance—transforming the printer from a batch processing device into a continuous manufacturing system without introducing additional mechanical complexity.</p>
+
+            <h2>The Product Context</h2>
+
+            <p>These automation systems were developed to scale production of custom-designed phone mounts I created for uniquely shaped car vents. The mounts evolved from an initial clip-around design to a minimalist "bowtie" design that was both more durable and faster to produce.</p>
+
+            <div class="image-row">
+                <div class="image-col">
+                    <img src="../projects/phone mounts/photos/original.png" alt="Original phone mount design">
+                </div>
+                <div class="image-col">
+                    <img src="../projects/phone mounts/photos/bowtie.png" alt="Optimized bowtie design">
+                </div>
+            </div>
+
+            <h2>Business Evolution & Current Products</h2>
+
+            <p>The Audi phone mount product line proved highly profitable, reaching peak sales of approximately 250 units monthly. However, the market landscape shifted as Chinese manufacturers on platforms like Temu entered the space with aggressive pricing strategies. While the business remained profitable at these lower price points, the reduced margins made it less attractive as a side business for a full-time software engineer.</p>
+
+            <p>Rather than competing on price in an increasingly commoditized market, I pivoted to identify underserved niches where custom 3D printing could provide unique value. This strategic shift led to the development of specialized products where the automation systems developed for phone mounts could be repurposed.</p>
+
+            <p>Currently, Print Radius continues to sell 3D-printed niche products on Amazon. The current flagship product addresses a specific need in the baby products market: <a href="https://www.amazon.com/Print-Radius-Retractable-Mobility-Sleeper/dp/B0DVS53R6R" target="_blank" style="color: #000; text-decoration: underline;">retractable wheels for the SNOO Smart Sleeper bassinet</a>. The SNOO, while innovative, is notably heavy and difficult to move—a problem our wheel system elegantly solves.</p>
+
+            <p>A Version 2 design is currently in development, focusing on reducing material usage and shipping costs through a more compact form factor. This iterative improvement approach—informed by customer feedback and production experience—demonstrates the ongoing application of the manufacturing automation principles developed during the phone mount production phase.</p>
+
+            <p>This business model evolution illustrates the value of the automation infrastructure: once developed, these systems can be redirected toward new products as market opportunities shift, providing flexibility to pursue higher-margin niche markets rather than competing on price in commoditized categories.</p>
+
+            <h2>Technical Stack</h2>
+            <ul>
+                <li>Servo motor control systems for robotic arm movements</li>
+                <li>Arduino-based electromechanical integration</li>
+                <li>G-code programming for machine control</li>
+                <li>Computer vision system for print monitoring</li>
+                <li>Web-based remote control interface</li>
+                <li>SMS notification system for remote alerts</li>
+                <li>CAD software for mechanical design</li>
+                <li>Closed-loop control systems for precise positioning</li>
+            </ul>
+
+            <a href="../about.html" class="back-btn">← Back to About</a>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Atlatl & Co. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

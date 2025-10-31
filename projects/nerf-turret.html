@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Nerf Turret - Miguel Clement</title>
+    <link rel="icon" href="../favicon/favicon.png">
+    <link rel="apple-touch-icon" href="../favicon/favicon.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 60px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #000000;
+        }
+
+        .breadcrumb .separator {
+            margin: 0 10px;
+            color: #cccccc;
+        }
+
+        .breadcrumb .current {
+            color: #000000;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666666;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        main {
+            padding: 60px 0;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #000000;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #333333;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 30px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tech-highlight {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 3px solid #000000;
+        }
+
+        .video-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            background: #000000;
+            border: 1px solid #e0e0e0;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background-color: transparent;
+            color: #000;
+            border: 1px solid #000;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            header {
+                padding: 30px 0 40px 0;
+            }
+
+            main {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="../about.html">About</a>
+                <span class="separator">/</span>
+                <span class="current">Autonomous Nerf Turret</span>
+            </div>
+            <h1>Autonomous Nerf Turret</h1>
+            <p class="subtitle">Computer Vision-Based Target Acquisition and Tracking System (2017)</p>
+        </header>
+
+        <main>
+            <p>In 2017, I built something I'd always dreamed of creating: an autonomous nerf turret that could detect and track targets in real-time. This project combined computer vision, hardware integration, and control systems—challenging me to learn CAD software and work across the full stack from sensing to actuation.</p>
+
+            <h2>Computer Vision with Kinect</h2>
+
+            <p>For the sensing system, I chose the Microsoft Kinect camera. The Kinect was revolutionary for its time—it used structured light depth sensing and infrared imaging to create 3D maps of the environment. By projecting a pattern of infrared dots and measuring their distortion, it could determine the distance to objects in real-time. The device came with built-in skeleton tracking algorithms that could identify human body positions and joint locations at 30 frames per second, making it perfect for this project and affordable at around $100.</p>
+
+            <img src="../projects/nerf turret/photos/kinect.png" alt="Kinect sensor setup">
+
+            <h2>Mechanical Design & Actuation</h2>
+
+            <p>I designed and 3D printed custom mounts to create a two-axis gimbal system. For actuation, I used powerful servo motors salvaged from RC cars to control the pitch and yaw of the nerf gun. These servos provided the torque needed to rapidly reposition the gun while maintaining precise angular control. To automate firing, I integrated a relay module connected directly to the trigger mechanism—essentially giving the turret a robotic finger.</p>
+
+            <img src="../projects/nerf turret/photos/turret.png" alt="Nerf turret mechanism">
+
+            <div class="tech-highlight">
+                <h3>The Algorithm</h3>
+                <p><strong>Target Acquisition:</strong> Using the Kinect's skeleton tracking, identify all humans in the field of view and calculate their center of mass.</p>
+                <p><strong>Aim Control:</strong> Command the servo motors to position the turret so its reticle aligns with the target's center of mass.</p>
+                <p><strong>Dwell Time:</strong> Track whether the target remains within the firing zone (a generous area to account for natural movement) for at least 5 seconds.</p>
+                <p><strong>Fire:</strong> Once the dwell threshold is met, activate the relay to fire continuously until the target exits the zone.</p>
+                <p><strong>Re-acquisition:</strong> Return to scanning mode and repeat the process for new targets.</p>
+            </div>
+
+            <p>Simple, effective, and incredibly fun to watch in action.</p>
+
+            <div class="video-container">
+                <h3>Demo Video</h3>
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/WyQEyUd7DhI?si=WwUJqdmUYax1oUdT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <h2>Evolution: Custom Blaster Design</h2>
+
+            <p>The next iteration focused on weight reduction. The stock nerf gun was bulky and heavy, limiting the turret's speed and responsiveness. I completely disassembled the blaster and stripped out the firing mechanism, reverse-engineering it to create a much more compact version.</p>
+
+            <p>In the process, I discovered I could improve performance by increasing the voltage to the flywheel motors. This modification significantly increased both the rate of fire and projectile range—turning it into a surprisingly formidable device.</p>
+
+            <div class="video-container">
+                <h3>Lightweight Blaster Demo</h3>
+                <div class="video-wrapper">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/6_-opdy7nQg?si=fx92odyOWrdQ7yZK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <p>While I never got around to mounting this improved blaster onto the turret platform, the project taught me invaluable lessons about mechanical design, motor control, and the satisfying challenge of building something that exists at the boundary between hardware and software.</p>
+
+            <h2>Technical Stack</h2>
+            <ul style="margin-left: 20px; color: #333333;">
+                <li>Microsoft Kinect for depth sensing and skeleton tracking</li>
+                <li>Custom 3D-printed gimbal mounts</li>
+                <li>RC servo motors for pan/tilt control</li>
+                <li>Relay module for automated firing</li>
+                <li>Python for computer vision and control logic</li>
+                <li>Arduino for hardware interfacing</li>
+            </ul>
+
+            <a href="../about.html" class="back-btn">← Back to About</a>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Atlatl & Co. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

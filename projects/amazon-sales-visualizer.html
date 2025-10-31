@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Sales Visualizer - Miguel Clement</title>
+    <link rel="icon" href="../favicon/favicon.png">
+    <link rel="apple-touch-icon" href="../favicon/favicon.png">
+    <link rel="manifest" href="../favicon/site.webmanifest">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0 60px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .breadcrumb {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb a {
+            color: #666666;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb a:hover {
+            color: #000000;
+        }
+
+        .breadcrumb .separator {
+            margin: 0 10px;
+            color: #cccccc;
+        }
+
+        .breadcrumb .current {
+            color: #000000;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666666;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        main {
+            padding: 60px 0;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #000000;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            color: #000000;
+        }
+
+        p {
+            font-size: 1.05rem;
+            color: #333333;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 30px 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .tech-highlight {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 3px solid #000000;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 30px;
+            color: #333333;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 12px 25px;
+            background-color: transparent;
+            color: #000;
+            border: 1px solid #000;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid #e0e0e0;
+            color: #666666;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            header {
+                padding: 30px 0 40px 0;
+            }
+
+            main {
+                padding: 40px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a>
+                <span class="separator">/</span>
+                <a href="../about.html">About</a>
+                <span class="separator">/</span>
+                <span class="current">Amazon Sales Visualizer</span>
+            </div>
+            <h1>Amazon Sales Visualizer</h1>
+            <p class="subtitle">Real-Time Business Intelligence Dashboard (2025)</p>
+        </header>
+
+        <main>
+            <p>As an Amazon seller running Atlatl & Co, I needed better visibility into my business metrics. Amazon's Seller Central provides data, but it's spread across multiple pages and lacks the visual clarity needed for quick decision-making. I built a custom sales visualization dashboard to aggregate and display key business metrics in real-time.</p>
+
+            <h2>The Challenge</h2>
+
+            <p>Running a product business on Amazon generates extensive data: sales volume, revenue, profit margins, inventory levels, advertising spend, and customer metrics. However, Amazon's native interface makes it difficult to see trends at a glance or correlate different metrics. I needed a tool that could answer questions like "How is my new product performing compared to last month?" or "What's my actual profit after all fees and advertising costs?"</p>
+
+            <h2>Solution Architecture</h2>
+
+            <div class="tech-highlight">
+                <h3>Data Pipeline</h3>
+                <p><strong>Amazon API Integration:</strong> [Details to be added]</p>
+
+                <p><strong>Data Processing:</strong> [Details to be added]</p>
+
+                <p><strong>Visualization Dashboard:</strong> [Details to be added]</p>
+            </div>
+
+            <h2>Key Features</h2>
+
+            <ul>
+                <li>Real-time sales and revenue tracking</li>
+                <li>Profit margin calculation including all Amazon fees</li>
+                <li>Inventory level monitoring and reorder alerts</li>
+                <li>Product performance comparison</li>
+                <li>Advertising ROI analysis</li>
+                <li>Historical trend visualization</li>
+            </ul>
+
+            <h2>Technical Stack</h2>
+            <ul>
+                <li>Amazon SP-API for data access</li>
+                <li>Python for data processing and analysis</li>
+                <li>Modern web framework for dashboard UI</li>
+                <li>Database for historical data storage</li>
+                <li>Automated data refresh and reporting</li>
+            </ul>
+
+            <p><em>This project is currently in active development. More details and screenshots will be added as the system is completed.</em></p>
+
+            <a href="../about.html" class="back-btn">← Back to About</a>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Atlatl & Co. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
